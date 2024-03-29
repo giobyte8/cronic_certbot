@@ -2,23 +2,30 @@
 
 Automates generation and renewal of SSL certificates by running [certbot](https://eff-certbot.readthedocs.io/en/latest/using.html) command periodically inside a docker container.
 
+Domain verification is done through [DNS-01 challenge](https://eff-certbot.readthedocs.io/en/stable/using.html#dns-plugins), hence, no webserver required to generate certificates.
+
 ## Deployment
 
 - [ ] Add deployment instructions using docker compose
 
 ## Development
 
+- [x] Fix `for` iteration to generate certs for all domains in array
+- [x] Fix permissions issues with creds file
+- [x] Review `--text` argument for `certbot`
+- [x] Add `--user` param to `docker run` and `docker compose` to prevent permissions issues on generated certificates.
+
 First, setup your env values
 ```shell
-cp creds_do.template .creds_digitalocean
-vim .creds_digitalocean
+cp src/creds_do.template src/.creds_digitalocean
+vim src/.creds_digitalocean
 # Enter your digitalocean token
 
-cp template.env .env
+cp src/template.env src/.env
 # Enter values for environment variables
 ```
 
-Once environment configured, you can use included scripts to work on this project.
+Once environment is configured, you can use included scripts to work on this project:
 
 - `docker/ccertbot.dockerfile` Dockerfile for **ccertbot** image
 

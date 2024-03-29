@@ -1,9 +1,12 @@
+certs_le/
 compose/
 docker/
-certs_le/
 
 .creds_digitalocean
-.dockerignore
 .env
+
+.dockerignore
+.gitignore
+
 README.md
 run_dev_container.sh

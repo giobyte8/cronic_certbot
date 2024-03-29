@@ -35,9 +35,6 @@ fi
 function gen_certificate_digitalocean {
     local domain="${1}"
 
-    echo
-    echo "Generating certificate for: ${domain} ..."
-
     certbot certonly \
         --non-interactive --agree-tos --keep-until-expiring \
         --email "${CCBOT_EMAIL}" \
@@ -49,11 +46,16 @@ function gen_certificate_digitalocean {
 while true; do
 
     # Generate certificates for configured domains
-    for domain in ${CCBOT_DOMAINS}; do
+    for domain in "${CCBOT_DOMAINS[@]}"; do
+        echo
+        echo "================================================================"
+        echo "Generating certificate for: ${domain}"
+
         gen_certificate_digitalocean "${domain}"
     done
 
     echo
+    echo "All domains had been processed"
     echo "Now going to sleep for 8 days"
     sleep 875520
 done
