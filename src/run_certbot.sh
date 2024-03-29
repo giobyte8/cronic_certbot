@@ -37,7 +37,6 @@ function gen_certificate_digitalocean {
 
     certbot certonly \
         --non-interactive --agree-tos --keep-until-expiring \
-        --logs-dir "./logs/" \
         --email "${CCBOT_EMAIL}" \
         --dns-digitalocean \
         --dns-digitalocean-credentials "${CCBOT_CREDS_DO_FILE}" \
@@ -54,6 +53,9 @@ while true; do
 
         gen_certificate_digitalocean "${domain}"
     done
+
+    # Allow read permissions on certificates
+    chmod 0755 /etc/letsencrypt/{live,archive}
 
     echo
     echo "All domains had been processed"
