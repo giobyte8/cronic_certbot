@@ -1,0 +1,9 @@
+compose/
+docker/
+certs_le/
+
+.creds_digitalocean
+.dockerignore
+.env
+README.md
+run_dev_container.sh
