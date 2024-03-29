@@ -1,0 +1,6 @@
+# Token is used to connect to DigitalOcean API and create/remove TXT records
+# to verify domain ownership.
+#
+# Generate a new token at: https://cloud.digitalocean.com/settings/api/tokens
+dns_digitalocean_token = <enter_your_token>
+
