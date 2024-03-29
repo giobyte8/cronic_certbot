@@ -37,6 +37,7 @@ function gen_certificate_digitalocean {
 
     certbot certonly \
         --non-interactive --agree-tos --keep-until-expiring \
+        --logs-dir "./logs/" \
         --email "${CCBOT_EMAIL}" \
         --dns-digitalocean \
         --dns-digitalocean-credentials "${CCBOT_CREDS_DO_FILE}" \
