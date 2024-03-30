@@ -10,7 +10,7 @@ Add `cronic_certbot` as a service to your `docker-compose.yaml`
 
 ```yaml
 services:
-	ccertbot:
+  ccertbot:
     image: giobyte8/ccertbot:1.0.0
     container_name: ccertbot
     restart: unless-stopped
@@ -19,7 +19,6 @@ services:
       - "${CCBOT_LOGS}:/var/log/letsencrypt"
       - "${CCBOT_ENV_FILE}:/opt/ccertbot/.env"
       - "${CCBOT_CREDS_DO_FILE}:/opt/ccertbot/.creds_digitalocean"
-		
 ```
 
 Make sure to add following variables to your compose `.env` file
@@ -32,8 +31,8 @@ CCBOT_CERTS_DIR=</path/to/workspace/appdata/ccertbot/sslcerts>
 CCBOT_LOGS=</path/to/workspace/appdata/ccertbot/logs>
 
 # ccertbot env and digital ocean credentials, you can use default values
-CCBOT_ENV_FILE=ccertbot/.env
-CCBOT_CREDS_DO_FILE=ccertbot/.creds_digitalocean
+CCBOT_ENV_FILE=./ccertbot/.env
+CCBOT_CREDS_DO_FILE=./ccertbot/.creds_digitalocean
 ```
 
 Finally add your own values to ccertbot  `.env` and `.creds_digitalocean` files
@@ -84,6 +83,13 @@ Once environment is configured, you can use included scripts to work on this pro
 
 ### Release a new version
 
+> Before building image, make sure to prepare docker builder for multi-platform image as described at [this blog post](https://giovanniaguirre.me/blog/docker_build_multiarch/)
+
 Use provided `build.sh` script to build a multi-platform image and upload into docker registry.
 
-- [ ] Add execution example
+```shell
+# Use -p to push into docker registry
+# Use -t to tag with release version
+./docker/build.sh -p -t 1.0.0
+```
+
