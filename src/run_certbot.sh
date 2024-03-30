@@ -55,7 +55,7 @@ while true; do
     # Generate certificates for configured domains
     for domain in "${CCBOT_DOMAINS[@]}"; do
         echo
-        echo "==============================================================================="
+        echo "-------------------------------------------------------------------------------"
         echo "Generating certificate for: ${domain}"
         echo
 
