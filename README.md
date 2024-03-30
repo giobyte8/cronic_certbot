@@ -4,7 +4,7 @@ Automates generation and renewal of SSL certificates by running [certbot](https:
 
 Domain verification is done through [DNS-01 challenge](https://eff-certbot.readthedocs.io/en/stable/using.html#dns-plugins), hence, no webserver required to generate certificates.
 
-## Deployment
+## Usage
 
 Add `cronic_certbot` as a service to your `docker-compose.yaml`
 
@@ -81,7 +81,7 @@ Once environment is configured, you can use included scripts to work on this pro
 ./docker/build.sh && ./run_dev_container.sh
 ```
 
-### Release a new version
+## Release a new version
 
 > Before building image, make sure to prepare docker builder for multi-platform image as described at [this blog post](https://giovanniaguirre.me/blog/docker_build_multiarch/)
 
